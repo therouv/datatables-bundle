@@ -105,7 +105,7 @@ class ArrayAdapter implements AdapterInterface
         foreach ($state->getDataTable()->getColumns() as $column) {
             $value = (!empty($propertyPath = $map[$column->getName()]) && $this->accessor->isReadable($result, $propertyPath)) ? $this->accessor->getValue($result, $propertyPath) : null;
             $value = $column->transform($value, $result);
-            if (!$match) {
+            if ($column->isSearchable() && !$match) {
                 $match = (false !== mb_stripos($value, $search));
             }
             $row[$column->getName()] = $value;
