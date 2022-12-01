@@ -35,8 +35,7 @@
         var persistOptions = config.state === 'none' ? {} : {
             stateSave: true,
             stateLoadCallback: function(s, cb) {
-                // Only need stateSave to expose state() function as loading lazily is not possible otherwise
-                return null;
+                return JSON.parse(localStorage.getItem('DataTables_' + config.name + '_' + window.location.pathname));
             }
         };
 
@@ -58,7 +57,7 @@
                             data.draw = request.draw;
                             drawCallback(data);
                             data = null;
-                            if (Object.keys(state).length) {
+                            if (Object.keys(state).length || true) {
                                 var api = new $.fn.dataTable.Api( settings );
                                 var merged = $.extend(true, {}, api.state(), state);
 
