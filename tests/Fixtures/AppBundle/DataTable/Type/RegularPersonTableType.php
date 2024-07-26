@@ -25,14 +25,15 @@ use Omines\DataTablesBundle\DataTableTypeInterface;
  */
 class RegularPersonTableType implements DataTableTypeInterface
 {
-    /**
-     * {@inheritdoc}
-     */
-    public function configure(DataTable $dataTable, array $optionss): void
+    public function configure(DataTable $dataTable, array $options): void
     {
         $dataTable
-            ->add('firstName', TextColumn::class)
-            ->add('lastName', TextColumn::class)
+            ->add('firstName', TextColumn::class, [
+                'searchable' => true,
+            ])
+            ->add('lastName', TextColumn::class, [
+                'searchable' => true,
+            ])
             ->add('lastActivity', DateTimeColumn::class, [
                 'data' => function () {
                     return '2017-1-1 12:34:56';

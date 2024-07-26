@@ -13,7 +13,6 @@ declare(strict_types=1);
 namespace Tests\Unit\Exporter;
 
 use Omines\DataTablesBundle\Exception\UnknownDataTableExporterException;
-use Omines\DataTablesBundle\Exporter\Excel\ExcelExporter;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
 /**
